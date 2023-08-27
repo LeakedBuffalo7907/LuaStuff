@@ -148,6 +148,11 @@ function boxBase:Update()
         return self:Remove()
     end
 
+    local distance = math.floor((cam.CFrame.p - cf.p).magnitude)
+    if distance > 4 then
+        return
+    end
+
     local color
     if ESP.Highlighted == self.Object then
        color = ESP.HighlightColor
@@ -224,17 +229,14 @@ function boxBase:Update()
         local TagPos, Vis5 = WorldToViewportPoint(cam, locs.TagPos.p)
         
         if Vis5 then
-	    local distance = math.floor((cam.CFrame.p - cf.p).magnitude)
-	    if distance > 4 then
-	        self.Components.Name.Visible = true
-                self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y)
-                self.Components.Name.Text = self.Name
-                self.Components.Name.Color = color
-	        self.Components.Distance.Visible = true
-                self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
-                self.Components.Distance.Text = distance .."m away"
-                self.Components.Distance.Color = color
-	    end
+	    self.Components.Name.Visible = true
+            self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y)
+            self.Components.Name.Text = self.Name
+            self.Components.Name.Color = color
+	    self.Components.Distance.Visible = true
+            self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
+            self.Components.Distance.Text = distance .."m away"
+	    self.Components.Distance.Color = color
         else
             self.Components.Name.Visible = false
             self.Components.Distance.Visible = false
