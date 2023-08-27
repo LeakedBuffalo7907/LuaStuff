@@ -148,11 +148,6 @@ function boxBase:Update()
         return self:Remove()
     end
 
-    local distance = math.floor((cam.CFrame.p - cf.p).magnitude)
-    if distance > 4 then
-        return
-    end
-
     local color
     if ESP.Highlighted == self.Object then
        color = ESP.HighlightColor
@@ -202,6 +197,11 @@ function boxBase:Update()
         TagPos = cf * ESP.BoxShift * CFrame.new(0,size.Y/2,0),
         Torso = cf * ESP.BoxShift
     }
+
+    local distance = math.floor((cam.CFrame.p - cf.p).magnitude)
+    if distance > 4 then
+        return
+    end
 
     if ESP.Boxes then
         local TopLeft, Vis1 = WorldToViewportPoint(cam, locs.TopLeft.p)
