@@ -199,7 +199,7 @@ function boxBase:Update()
     }
 
     local distance = math.floor((cam.CFrame.p - cf.p).magnitude)
-    if distance > 4 then
+    if distance < 4 then
         return
     end
 
