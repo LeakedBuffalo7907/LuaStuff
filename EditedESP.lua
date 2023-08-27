@@ -224,15 +224,17 @@ function boxBase:Update()
         local TagPos, Vis5 = WorldToViewportPoint(cam, locs.TagPos.p)
         
         if Vis5 then
-            self.Components.Name.Visible = true
-            self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y)
-            self.Components.Name.Text = self.Name
-            self.Components.Name.Color = color
-            
-            self.Components.Distance.Visible = true
-            self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
-            self.Components.Distance.Text = math.floor((cam.CFrame.p - cf.p).magnitude) .."m away"
-            self.Components.Distance.Color = color
+	    local distance = math.floor((cam.CFrame.p - cf.p).magnitude)
+	    if distance > 4 then
+	        self.Components.Name.Visible = true
+                self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y)
+                self.Components.Name.Text = self.Name
+                self.Components.Name.Color = color
+	        self.Components.Distance.Visible = true
+                self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
+                self.Components.Distance.Text = distance .."m away"
+                self.Components.Distance.Color = color
+	    end
         else
             self.Components.Name.Visible = false
             self.Components.Distance.Visible = false
