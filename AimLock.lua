@@ -49,3 +49,4 @@ function AimLock:Update()
   end
 
 end
+return AimLock
