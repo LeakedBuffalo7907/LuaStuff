@@ -34,17 +34,16 @@ function AimLock:Update()
       local camera = cam
       local targetPosition = currentActor.PrimaryPart.Position
       local turnTime = AimLock.turnSpeed
-      
+      print(targetPosition)
       local startTime = tick()
       while tick() - startTime < turnTime do
-          local elapsedTime = tick() - startTime
-          local lerpedValue = elapsedTime / turnTime
-          local currentLookVector = camera.CFrame.LookVector
-          local targetLookVector = (targetPosition - camera.CFrame.Position).Unit
-          
-          local newLookVector = Vector3.lerp(currentLookVector, targetLookVector, lerpedValue)
-          camera.CFrame = CFrame.lookAt(camera.CFrame.Position, camera.CFrame.Position + newLookVector)
-          wait()
+        local elapsedTime = tick() - startTime
+        local lerpedValue = elapsedTime / turnTime
+        local currentLookVector = camera.CFrame.LookVector
+        local targetLookVector = (targetPosition - camera.CFrame.Position).Unit
+        local newLookVector = Vector3.lerp(currentLookVector, targetLookVector, lerpedValue)
+        camera.CFrame = CFrame.lookAt(camera.CFrame.Position, camera.CFrame.Position + newLookVector)
+        wait()
       end
     end
   end
