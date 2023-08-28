@@ -1,5 +1,5 @@
 --Settings--
-AimLock = {
+local AimLock = {
   Enable = false,
   Filter = "soldier_model",
   TeamCheck = true,
