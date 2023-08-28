@@ -13,6 +13,7 @@ local ESP = {
     AttachShift = 1,
     TeamMates = true,
     Players = true,
+    Outline = true,
     
     Objects = setmetatable({}, {__mode="kv"}),
     Overrides = {}
@@ -297,14 +298,14 @@ function ESP:Add(obj, options)
 		Text = box.Name,
 		Color = box.Color,
 		Center = true,
-		Outline = true,
+		Outline = ESP.Outline,
         Size = 19,
         Visible = self.Enabled and self.Names
 	})
 	box.Components["Distance"] = Draw("Text", {
 		Color = box.Color,
 		Center = true,
-		Outline = true,
+		Outline = ESP.Outline,
         Size = 19,
         Visible = self.Enabled and self.Names
 	})
